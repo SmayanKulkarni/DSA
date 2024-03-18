@@ -1,15 +1,7 @@
 
 #include <iostream>
-
+#include "mainstudentclass.cpp"
 using namespace std;
-
- class Student 
-{
-    int rollno;
-    int age;
-   
-};
-
 int main()
 {
     Student s1;
@@ -20,5 +12,7 @@ int main()
     s1.rollno = 101;
 
     cout<<s1.age<<" "<<s1.rollno<<endl;
+    s6->age = 45;   
+    s6->rollno = 102;
     return 0;
 }
