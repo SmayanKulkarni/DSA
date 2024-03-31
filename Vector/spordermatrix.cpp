@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+using namespace std;
 class Solution
 {
     public:
@@ -38,7 +39,7 @@ class Solution
                 er--;
                 if(count==m*n) return ans;
 
-                for(int i= er;i>=sr;i++)
+                for(int i= er;i>=sr;i--)
                 {
                     ans.push_back(matrix[i][sc]);
                     count++;
@@ -52,3 +53,16 @@ class Solution
     
 
 };
+
+int main()
+{
+    Solution obj;
+    vector<vector<int>> matrix = {{1,2,3},{4,5,6},{3,4,6},{3,5,7}};
+    vector<int> ans = obj.spiralorder(matrix);
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+    cout<<endl;
+    return 0;
+}
