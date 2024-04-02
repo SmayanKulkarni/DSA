@@ -22,7 +22,7 @@ int main()
 {
     int n;
     cin>>n;
-    printascending(n);
+    //printascending(n);
     printdescending(n);
     return 0;
 
