@@ -10,8 +10,6 @@ int pow(int d, int n)
     int smallans = pow(d,n-1);
     //final ans
     return d*smallans;
-
-
 }
 
 int main()
