@@ -8,7 +8,6 @@ int sum(int a[], int n)
     if(n==1) return a[0];
 
     return a[0] + sum(a+1,n-1);
-
 }
 int sum2(int a[], int n)
 {
