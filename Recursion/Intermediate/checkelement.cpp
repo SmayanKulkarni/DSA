@@ -24,6 +24,17 @@ bool checkelement2(int a[], int n,int x)
     int smallans = checkelement2(a, n-1,x); 
     return smallans;  
 }
+bool checkelement3(int a[], int n,int x, int i)
+{
+    //base case
+    if(n==i) return false;
+
+    if(a[i] == x) return true; 
+    
+    //recursive case
+    bool smallans = checkelement3(a, n,x, i+1); 
+    return smallans;  
+}
 
 int main()
 {
@@ -35,7 +46,7 @@ int main()
         cin>>a[i];
     }
     cin>>x;
-   if(checkelement(a,n,x)==true) cout<<"Found";
+   if(checkelement3(a,n,x,0)==true) cout<<"Found";
    else cout<<"Not found";
     
     return 0;
