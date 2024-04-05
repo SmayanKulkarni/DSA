@@ -7,5 +7,6 @@
         "string": "cpp",
         "vector": "cpp",
         "valarray": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
