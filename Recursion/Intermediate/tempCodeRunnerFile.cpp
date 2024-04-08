@@ -1,3 +1,3 @@
 
-    int a[n];
-    for(int i=0;i<n;i++)
+    int n,x;
+    cin>>n;
