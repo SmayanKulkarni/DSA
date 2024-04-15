@@ -2,24 +2,29 @@
 
 using namespace std;
 
-void printsubs(string input, string output)
+void remove(char a[], char x)
 {
-    if(input.length()==0)
-    {
-        cout<<output<<endl;
+    if(a[0] == '\0'){
         return;
     }
-    printsubs(input.substr(1),output+input[0]); //including
-    printsubs(input.substr(1),output);//excluding
-    
-}
+    if(a[0] !=x) {
+        remove(a+1,x);
+    }
+    else {
+        for(int i=0; a[i]!='\0'; i++) {
+            a[i]=a[i+1];
+        }
+         remove(a,x);
+}  }
 
 int main()
 {
-    string input;
-    cin>>input;
-    string output="";
-    printsubs(input,output);
-    
+    char a[10];
+    cin>>a;
+    cout<<"Before Replacement: "<<a<<endl;
+    cout<<"After Replacement: ";
+    remove(a,'a');
+    cout<<"After Replacement: "<<a<<endl;
+
     return 0;
 }
