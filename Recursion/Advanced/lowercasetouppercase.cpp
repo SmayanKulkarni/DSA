@@ -2,15 +2,13 @@
 #include <string>
 using namespace std;
 
-void revstring(string &s, int st, int e)
+void checkcase(string &s, int i)
 {
-    if(st>=e) 
-    {
-        
-        return;
-    }
-    swap(s[st],s[e]);
-    revstring(s,st+1, e-1);
+    if(i=-1) return;
+
+    s[i] = 'A' + s[i]-'a';
+    checkcase(s, i-1);
+
     
 }
 
@@ -18,7 +16,7 @@ int main()
 {
     string a= "aeiioodsd";
     int len = a.length();
-    revstring(a,0,len-1);
+    checkcase(a, 10);
     cout<<a<<endl;
     return 0;
 }

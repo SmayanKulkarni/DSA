@@ -16,8 +16,9 @@ void revstring(string &s, int st, int e)
 
 int main()
 {
-    string a= "aeiioodsd";
-    int len = a.length();
+    string a;
+    cin>>a;
+      int len = a.length();
     revstring(a,0,len-1);
     cout<<a<<endl;
     return 0;
