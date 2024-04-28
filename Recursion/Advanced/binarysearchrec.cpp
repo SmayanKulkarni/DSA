@@ -23,7 +23,7 @@ int main()
        int arr[5];
     for(int i=0;i<5;i++)
     {
-        cin>>arr[i];
+        cin>>arr[i]; // minor change
     }
     int x;
     cin>>x;
