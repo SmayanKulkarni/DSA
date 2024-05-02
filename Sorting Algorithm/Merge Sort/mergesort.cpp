@@ -40,8 +40,8 @@ void mergesort(int arr[], int s, int e)
 {
     if(s>=e) return;
     int mid = (s+e)/2;
-    int x[100],y[100];
-    for(int i=0;i<=mid;i++)
+    int x[100],y[100];  
+    for(int i=0;i<=mid;i++)  
     {
         x[i]=arr[i];
     }
