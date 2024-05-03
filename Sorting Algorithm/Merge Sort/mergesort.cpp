@@ -22,7 +22,7 @@ void mergearray(int x[], int y[], int a[], int s, int e)
             k++;
         }
     }
-    while(i<=mid)
+    while(i<=mid) // for other parts of array
     {
         a[k]=x[i];
         i++;
