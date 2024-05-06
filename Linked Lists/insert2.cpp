@@ -43,7 +43,7 @@ Node* takeinput()
         }
         else //Consecutive Nodes
         {
-            head->next = n;
+            n->next = head;
             head=n;
         }
         cin>>data;
