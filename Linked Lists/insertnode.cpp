@@ -76,7 +76,7 @@ Node* insertatith(Node *head, int i, int data) {
         head = n;
         return head;
     }
-
+     Node *copyhead = head;
     int count =1;
     while (count<=i-1 && head!=NULL)    
     {
@@ -88,9 +88,9 @@ Node* insertatith(Node *head, int i, int data) {
         Node *n = new Node(data);
         n->next = head->next;
         head->next = n;
-        return head;
+        return copyhead;
     }
-    return head;
+    return copyhead;
     
 }
 
