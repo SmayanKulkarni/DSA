@@ -1,1 +1,1 @@
-head
+temp = (head->next);
