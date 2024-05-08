@@ -58,14 +58,25 @@ int length(Node *head)
    return 1+ length(head->next);
 }
 
-
+bool search(Node *head, int data)
+{
+    Node* curr = head;
+    while (curr!=NULL) 
+    {
+        if (curr->data==data) return true;
+        curr = curr->next;
+    }
+    return false;
+    
+}
 int main()
 {
     Node *head = takeinput();
 
     
     // deleteithNode(head,4);
-    cout<<length(head)<<endl;
+    // cout<<length(head)<<endl;
+    cout<<search(head, 3)<<endl;
     // insertnode(head, 3, 20);
     print(head);
     //  print_itnode(head, 3);
