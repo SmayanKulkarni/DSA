@@ -53,50 +53,10 @@ Node* takeinput()
 
 int length(Node *head)
 {
-    int count=0;
-    Node *temp = head;
-    while(temp!=NULL)
-    {
-        count++;
-        temp = temp->next;
-    }
-   return count; 
-
+   if (head==NULL) return 0;
+   
+   return 1+ length(head->next);
 }
-
-
-Node* deleteithNode(Node* head, int i)
-{
-    if(i<0)
-    {
-        return head;
-    }
-    if(i==0 &&head)
-    {
-        Node* newHead = head->next; 
-        head->next=NULL;
-        delete head;
-        return newHead;
-    }
-
-    Node* curr = head;
-    int count=0;
-    while(count<=i-1 &&curr!=NULL)
-    {
-        curr=curr->next;
-        count++;
-    }
-    if(curr && curr->next)
-    {
-        Node *temp = curr->next;
-        curr->next = curr->next->next;
-        temp->next=NULL;
-        delete temp;
-        return head;
-    }
-    return head;
-}
-
 
 
 int main()
@@ -104,8 +64,8 @@ int main()
     Node *head = takeinput();
 
     
-    deleteithNode(head,4);
-    // cout<<length(head)<<endl;
+    // deleteithNode(head,4);
+    cout<<length(head)<<endl;
     // insertnode(head, 3, 20);
     print(head);
     //  print_itnode(head, 3);
