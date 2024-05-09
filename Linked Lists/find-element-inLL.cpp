@@ -60,7 +60,7 @@ int length(Node *head)
 
 bool search(Node *head, int data)
 {
-    Node* curr = head;
+    Node* curr = head; // main
     while (curr!=NULL) 
     {
         if (curr->data==data) return true;
