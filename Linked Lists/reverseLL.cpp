@@ -4,28 +4,29 @@ using namespace std;
 
 class Node
 {
-    public:
-        int data;
-        Node *next;
+public:
+    int data;
+    Node *next;
 
-        Node(int data)
-        {
-            this->data= data;
-            next=NULL;
-        }
+    Node(int data)
+    {
+        this->data = data;
+        next = NULL;
+    }
 };
 
 void print(Node *head)
 {
     Node *temp = head;
 
-    while(temp!=NULL) {
-        cout<<temp->data<<endl;
+    while (temp != NULL)
+    {
+        cout << temp->data << endl;
         temp = temp->next;
     }
 }
 
-Node* takeinput()
+Node *takeinput()
 {
     int data;
     cin >> data;
@@ -50,36 +51,37 @@ Node* takeinput()
     return head;
 }
 
-
 int length(Node *head)
 {
-    int count=0;
+    int count = 0;
     Node *temp = head;
-    while(temp!=NULL)
+    while (temp != NULL)
     {
         count++;
         temp = temp->next;
     }
-   return count; 
-
+    return count;
 }
 
 void print_itnode(Node *head, int i)
 {
     Node *temp = head;
     int len = length(head);
-    if (i >= len) {
+    if (i >= len)
+    {
         cout << "NULL" << endl;
     }
-    else 
+    else
     {
         int j = 0;
-        while (temp != NULL) {
+        while (temp != NULL)
+        {
             if (j != i)
             {
                 temp = temp->next;
             }
-            else {
+            else
+            {
                 Node *n = new Node(temp->data);
                 n->next = NULL;
                 cout << n->data << endl;
@@ -92,47 +94,46 @@ void print_itnode(Node *head, int i)
 
 void printith_2(Node *head, int i)
 {
-    if(i<0)
+    if (i < 0)
     {
-            cout << "NULL" << endl;
+        cout << "NULL" << endl;
     }
 
-    int count =1;
-    while(count <=i && head!= NULL)
+    int count = 1;
+    while (count <= i && head != NULL)
     {
         head = head->next;
         count++;
     }
-    if(head)
+    if (head)
     {
-        cout<<head->data<<endl;
+        cout << head->data << endl;
     }
     else
     {
-        cout<<"NULL";
+        cout << "NULL";
     }
 }
 
-Node* reverseList(Node* head) {
-        Node* curr = head;
-        Node* prev = NULL;
-        while(curr)
-        {
-            Node* n = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = n;
-        }
-        return prev;
+Node *reverseList(Node *head)
+{
+    Node *curr = head;
+    Node *prev = NULL;
+    while (curr)
+    {
+        Node *n = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = n;
     }
+    return prev;
+}
 int main()
 {
     Node *head = takeinput();
     print(head);
-    cout<<length(head)<<endl;
-     print_itnode(head, 3);
-     printith_2(head, 3);
+    cout << length(head) << endl;
+    print_itnode(head, 3);
+    printith_2(head, 3);
     return 0;
-    
-
 }
