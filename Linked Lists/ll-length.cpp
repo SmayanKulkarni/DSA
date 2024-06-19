@@ -23,7 +23,7 @@ void print(Node *head)
         cout<<temp->data<<endl;
         temp = temp->next;
     }
-}
+} 
 
 Node* takeinput()
 {
@@ -43,8 +43,8 @@ Node* takeinput()
         }
         else //Consecutive Nodes
         {
-            n->next = head;
-            head=n;
+            tail->next = n;
+            tail= n;
         }
         cin>>data;
     }
@@ -62,7 +62,7 @@ int length(Node *head)
     }
    return count; 
 
-}
+} 
 
 int main()
 {
@@ -72,3 +72,4 @@ int main()
     return 0;
 
 }
+
