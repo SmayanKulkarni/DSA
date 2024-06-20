@@ -46,7 +46,7 @@ Node *takeinput()
             tail->next = n; // Connect the new node to the current tail
             tail = n;       // Update the tail to the new node
         }
-        cin >> data;
+        cin >> data; //imp
     }
     return head;
 }
