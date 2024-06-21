@@ -15,7 +15,7 @@ public:
         next = NULL;
     }
 };
-
+-
 void print(Node *head)
 {
     Node *temp = head;
@@ -122,19 +122,19 @@ Node* mergeTwoLists(Node* l1, Node* l2) {
         if(l1==NULL) return l2;
         if(l2==NULL) return l1;
 
-        Node* finalHead = NULL;
+        Node* finalTail = NULL;
         if(l1->data < l2->data)
         {
-            finalHead = l1;
+            finalTail = l1;
             l1 = l1->next;
         }
         else
         {
-            finalHead = l2;
+            finalTail = l2;
             l2 = l2->next;
         }
 
-        Node* finalTail = finalHead;
+        // Node* finalTail = finalHead;
         while(l1 && l2)
         {
             if(l1->data < l2->data)
@@ -158,7 +158,7 @@ Node* mergeTwoLists(Node* l1, Node* l2) {
             finalTail->next = l2;
         }
         
-    return finalHead;
+    return finalTail;
     }
 
     int main()
