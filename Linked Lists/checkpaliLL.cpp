@@ -78,7 +78,6 @@ bool isPalindrome(Node *head)
 {
     if (head->next == NULL)
         return 1;
-
     Node *temp = head;
     int count = 0;
     while (temp)
@@ -86,8 +85,6 @@ bool isPalindrome(Node *head)
         count++;
         temp = temp->next;
     }
-
-    // delete temp;
     Node *curr = head, *prev = NULL;
     count /= 2;
     for (int i = 0; i < count; i++)
@@ -96,9 +93,7 @@ bool isPalindrome(Node *head)
         curr = curr->next;
     }
     prev->next = NULL;
-
     prev = NULL;
-
     Node *front;
     while (curr)
     {
@@ -107,10 +102,7 @@ bool isPalindrome(Node *head)
         prev = curr;
         curr = front;
     }
-    // delete curr;
-    // delete front;
     Node *head1 = head, *head2 = prev;
-
     while (head1)
     {
         if (head1->data != head2->data)
@@ -120,7 +112,6 @@ bool isPalindrome(Node *head)
         head1 = head1->next;
         head2 = head2->next;
     }
-
     return 1;
 }
 
