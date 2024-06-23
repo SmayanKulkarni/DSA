@@ -15,18 +15,6 @@ public:
         next = NULL;
     }
 };
--
-    void
-    print(Node *head)
-{
-    Node *temp = head;
-
-    while (temp != NULL)
-    {
-        cout << temp->data << endl;
-        temp = temp->next;
-    }
-}
 
 Node *takeinput()
 {
@@ -118,51 +106,6 @@ Node *deleteithNode(Node *head, int i)
     return head;
 }
 
-Node *mergeTwoLists(Node *l1, Node *l2)
-{
-    if (l1 == NULL)
-        return l2;
-    if (l2 == NULL)
-        return l1;
-
-    Node *finalTail = NULL;
-    if (l1->data < l2->data)
-    {
-        finalTail = l1;
-        l1 = l1->next;
-    }
-    else
-    {
-        finalTail = l2;
-        l2 = l2->next;
-    }
-
-    // Node* finalTail = finalHead;
-    while (l1 && l2)
-    {
-        if (l1->data < l2->data)
-        {
-            finalTail->next = l1;
-            l1 = l1->next;
-        }
-        else
-        {
-            finalTail->next = l2;
-            l2 = l2->next;
-        }
-        finalTail = finalTail->next;
-    }
-    if (l1)
-    {
-        finalTail->next = l1;
-    }
-    else
-    {
-        finalTail->next = l2;
-    }
-
-    return finalTail;
-}
 
 Node *sortList(Node *head)
 {
