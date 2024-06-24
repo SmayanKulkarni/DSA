@@ -1,16 +1,17 @@
 #include <iostream>
 using namespace std;
+template<typename T>
 class Stack
 {
 private:
-    int *arr;
+    T *arr;
     int nextIndex;
     int capacity;
 
 public:
     Stack()
     {
-        arr = new arr[4];
+        arr = new T[4];
         nextIndex = 0;
     }
     int size()
@@ -23,11 +24,11 @@ public:
         return nextIndex == 0;
     }
 
-    void push(int ele)
+    void push(T ele)
     {
         if (nextIndex == capacity)
         {
-            int *newarr =  new int[2*capacity];
+            T *newarr =  new T[2*capacity];
             for (int i = 0; i < 2*capacity; i++)
             {
                 newarr[i] = arr[i];
@@ -50,12 +51,12 @@ public:
         nextIndex--;
     }
 
-    int top()
+    T top()
     {
         if (isEmpty())
         {
             cout << "Stack is empty" << endl;
-            return -1;
+            return 0;
         }
         return arr[nextIndex - 1];
     }
@@ -63,7 +64,7 @@ public:
 
 int main()
 {
-    Stack s;
+    Stack<int> s;
     s.push(10);
     s.push(20);
     s.push(30);
@@ -73,4 +74,15 @@ int main()
     cout << s.top() << endl;
     s.pop();
     cout << s.top() << endl;
+
+    Stack<int> s1;
+    s1.push(100);
+    s1.push(101);
+    s1.push(102);
+    s1.push(103);
+    s1.push(104);
+
+    cout << s1.top() << endl;
+    s1.pop();
+    cout << s1.top() << endl;
 }
