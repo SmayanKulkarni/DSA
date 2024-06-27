@@ -17,7 +17,7 @@ int main(){
    s.pop();
 
    cout<<s.size()<<endl;
-   cout<<s.empty()<<endl;
+   cout<<s.empty()<<endl;x
 
    while(!s.empty()){
     cout<<s.top()<<endl;
