@@ -40,8 +40,23 @@ public:
     {
         if (size == cap)
         {
-            cout << "Queue full" << endl;
-            return;
+            T *newarr = new T[2 * cap];
+            int j = 0;
+            for (int i = firstindex; i < cap; i++)
+            {
+                newarr[j] = arr[i];
+                j++;
+            }
+            for (int i = 0; i < firstindex; i++)
+            {
+                newarr[j] = arr[i];
+                j++;
+            }
+            firstindex = 0;
+            nextindex = cap;
+            cap *= 2;
+            delete[] arr;
+            arr = newarr;
         }
         arr[nextindex] = ele;
         nextindex = (nextindex + 1) % cap;
