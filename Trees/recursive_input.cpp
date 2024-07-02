@@ -14,7 +14,7 @@ class TreeNode{
          
 };
 
-void printTree(TreeNode<int>* root)
+void printTree(TreeNode<int>* root) 
 {
     if(!root) return;
     cout<<root->data<<": ";
