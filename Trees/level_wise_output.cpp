@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include<queue>
+#include<stack>
+
 using namespace std;
 template<typename T>
 class TreeNode{
@@ -61,10 +63,34 @@ TreeNode<int>* takeinputLevelWise() // recursive
     }
     return root;
 }
+
+void outputLevelWise(TreeNode<int>* root) 
+{
+    queue<TreeNode<int>*> q;
+    q.push(root);
+    
+    while(!q.empty())
+    {
+        TreeNode<int>* f = q.front();
+        q.pop();
+       cout<<f->data<<": ";
+       for(int i = 0; i<f->children.size(); i++)
+       {
+            cout<<f->children[i]->data<<", ";
+       }
+       cout<<endl;
+       for(int i =0;i<f->children.size(); i++)
+       {
+            q.push(f->children[i]);
+       }
+    }
+   
+
+}
 int main()
 {
     TreeNode<int>* root = takeinputLevelWise();
-
-    printTree(root);
+    outputLevelWise(root);
+    // printTree(root);
     return 0; 
 }
