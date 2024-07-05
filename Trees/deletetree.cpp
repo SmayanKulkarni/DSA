@@ -12,6 +12,13 @@ public:
     TreeNode(T data) {
         this->data = data;
     }
+    ~TreeNode()
+    {
+        for(int i = 0;i<children.size(); i++)
+        {
+            delete children[i];
+        }
+    }
 };
 
 TreeNode<int>* takeInputLevelWise() {
@@ -55,6 +62,8 @@ void deleteTree(TreeNode<int> * root)
 int main() {
     TreeNode<int>* root = takeInputLevelWise();
     deleteTree(root);
+
+    delete root; // will only work with a destructor initialized 
     
     
     return 0;
