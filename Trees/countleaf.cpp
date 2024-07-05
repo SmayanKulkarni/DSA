@@ -1,21 +1,18 @@
 #include <iostream>
 #include <vector>
-#include<queue>
-#include<stack>
+#include <queue>
 
 using namespace std;
-template<typename T>
-class TreeNode{
-    public: 
-        T data;
-        vector<TreeNode<T>*> children;
-        TreeNode(T data)
-        {
-            this->data = data;         
-        }
-         
-};
 
+template <typename T>
+class TreeNode {
+public:
+    T data;
+    vector<TreeNode<T>*> children;
+    TreeNode(T data) {
+        this->data = data;
+    }
+};
 
 TreeNode<int>* takeInputLevelWise() {
     int rootData;
@@ -44,50 +41,43 @@ TreeNode<int>* takeInputLevelWise() {
     return root;
 }
 
-void depth(TreeNode<int>* root, int k)
-{
-    if(!root) return;
-    if(k==0) {
-        cout<<root->data<<endl;
-    }
-
-    for(int i =0;i<root->children.size();i++) {
-        depth(root->children[i], k-1);
-    }
-
-}
-
-int countLeafNodes(TreeNodeint root){
-    if(root==NULL){   edge case
+int countLeafNodes(TreeNode<int>* root) {
+    if (root == nullptr) {
         return 0;
-      }
-      if(root-children.size()==0){
-        return 1;
-      }
-      int ans = 0;
-      for(int i=0;iroot-children.size();i++){
-       ans +=  countLeafNodes(root-children[i]);
-      }
-      return ans;
-}
-void countLeafNodesOtherWay(TreeNodeint root, int &ans){
-    if(root==NULL){   edge case
-        return ;
     }
-      if(root-children.size()==0){
-         ans++;
-         return;
-      }
-      for(int i=0;iroot-children.size();i++){
-         countLeafNodesOtherWay(root-children[i],ans);
-      }
+    if (root->children.size() == 0) {
+        return 1;
+    }
+    int ans = 0;
+    for (size_t i = 0; i < root->children.size(); i++) {
+        ans += countLeafNodes(root->children[i]);
+    }
+    return ans;
 }
 
-int main()
-{
+void countLeafNodesOtherWay(TreeNode<int>* root, int& ans) {
+    if (root == nullptr) {
+        return;
+    }
+    if (root->children.size() == 0) {
+        ans++;
+        return;
+    }
+    for (size_t i = 0; i < root->children.size(); i++) {
+        countLeafNodesOtherWay(root->children[i], ans);
+    }
+}
+
+int main() {
     TreeNode<int>* root = takeInputLevelWise();
-   
-    depth(root, 2);
     
-    return 0; 
+    // Call the function to count leaf nodes and print the result
+    int leafNodeCount = countLeafNodes(root);
+    cout << "Number of leaf nodes: " << leafNodeCount << endl;
+    
+    int otherWayLeafCount = 0;
+    countLeafNodesOtherWay(root, otherWayLeafCount);
+    cout << "Number of leaf nodes (other way): " << otherWayLeafCount << endl;
+
+    return 0;
 }
