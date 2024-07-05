@@ -27,6 +27,14 @@ void printtree(BTnode<int> *root)
 {
     if(!root) return;
     cout<<root->data<<endl;
+    if(!root->left)
+    {
+        cout<<"L: "<<root->left->data;
+    }
+    if(!root->right)
+    {
+        cout<<"R: "<<root->right->data;
+    }
         printtree(root->left);
         printtree(root->right);
     
