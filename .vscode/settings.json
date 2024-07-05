@@ -11,7 +11,11 @@
         "string_view": "cpp",
         "ranges": "cpp",
         "span": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "stacktrace": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
