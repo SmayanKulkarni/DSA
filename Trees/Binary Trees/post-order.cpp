@@ -1,37 +1,36 @@
 class Solution {
 public:
     /**
-     * Performs a preorder traversal of the binary tree and stores the node values in a vector.
+     * Performs a postorder traversal of the binary tree and stores the node values in the given vector.
      * 
-     * The preorder traversal visits the current node, then the left subtree, and finally the right subtree.
-     */
-    void preorder(TreeNode* root, vector<int> &ans) {
+     * Postorder traversal visits the left subtree, then the right subtree, and finally the current node.
+     * 
+     *          1
+     *         / \
+     *        2   3
+     *       / \   \
+     *      4   5   6
+     * 
+     * Postorder traversal order: [4, 5, 2, 6, 3, 1]
+*/
+    void postorder(TreeNode* root, vector<int> &ans) {
         if (!root) return;
-        ans.push_back(root->val); // Visit the current node
-        preorder(root->left, ans); // Traverse the left subtree
-        preorder(root->right, ans); // Traverse the right subtree
+        
+        postorder(root->left, ans);  // Visit left subtree
+        postorder(root->right, ans); // Visit right subtree
+        ans.push_back(root->val);   // Visit current node
     }
 
     /**
-     * Returns a vector containing the node values of the binary tree in preorder traversal order.
+     * Returns a vector containing the node values of the binary tree in postorder traversal order.
      * 
      * Example:
-     * Input: [1, 2, 3, 4, 5, 6, 7]
-     * Output: [1, 2, 4, 5, 3, 6, 7]
-     * 
-     * The binary tree:
-     *       1
-     *     /   \
-     *    2     3
-     *   / \   / \
-     *  4   5 6   7
-     * 
-     * The preorder traversal visits the nodes in the following order:
-     * 1, 2, 4, 5, 3, 6, 7
-     */
-    vector<int> preorderTraversal(TreeNode* root) {
+     * Input: [1, 2, 3, 4, 5, 6]
+     * Output: [4, 5, 2, 6, 3, 1]
+ */
+    vector<int> postorderTraversal(TreeNode* root) {
         vector<int> ans;
-        preorder(root, ans);
+        postorder(root, ans);
         return ans;
     }
 };
