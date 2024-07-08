@@ -1,4 +1,4 @@
-bool searchNode(BTNode<int>* root, int key){
+TreeNode* searchNode(BTNode<int>* root, int key){
    if(root==NULL){
     return false;
    }
