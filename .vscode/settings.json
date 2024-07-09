@@ -15,7 +15,10 @@
         "bitset": "cpp",
         "initializer_list": "cpp",
         "stacktrace": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "cstdlib": "cpp",
+        "algorithm": "cpp",
+        "format": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

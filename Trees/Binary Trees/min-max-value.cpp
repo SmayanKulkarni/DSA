@@ -78,10 +78,50 @@ void printtree(BTnode<int> *root)
         printtree(root->right);
     
 }
+
+int minvalue(BTnode<int>* root)
+{
+    if(!root) return __INT_MAX__;
+    int ans = root->data;
+    int leftmin = minvalue(root->left);
+    int rightmin = minvalue(root->right);
+
+    return min(root->data, min(leftmin, rightmin));
+
+}
+
+int maxvalue(BTnode<int>* root)
+{
+    if(!root) return INT_MIN;
+    int ans = root->data;
+    int leftmin = minvalue(root->left);
+    int rightmin = minvalue(root->right);
+
+    return max(root->data, max(leftmin, rightmin));
+
+}
+
+void minval(BTnode<int> *root, int &ans){
+    if(root==NULL) return;
+    int ans = min(root->data, ans);;
+    minval(root->left, ans);
+    minval(root->right, ans);
+    
+}
+
+void maxval(BTnode<int> *root, int &ans){
+    if(root==NULL) return;
+    int ans = max(ans,root->data);
+    maxval(root->left, ans);
+    maxval(root->right, ans);
+    
+}
 int main()
 {
     BTnode<int>* root = takeinputLevelWise();
     printtree(root);
-    delete root;
+    cout<<endl;
+    int ans = minvalue(root);
+    cout<<ans<<endl;
     return 0;
 }

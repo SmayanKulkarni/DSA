@@ -25,13 +25,13 @@ public:
 
 void printtree(BTnode<int> *root)
 {
-    if(!root) return;
+    if(root == NULL) return;
     cout<<root->data<<endl;
-    if(!root->left)
+    if(root->left)
     {
         cout<<"L: "<<root->left->data;
     }
-    if(!root->right)
+    if(root->right)
     {
         cout<<"R: "<<root->right->data;
     }

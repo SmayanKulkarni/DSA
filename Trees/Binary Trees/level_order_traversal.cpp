@@ -93,19 +93,19 @@ BTnode<int> *takeinputLevelWise()
  */
 void printtree(BTnode<int> *root)
 {
-    if (!root)
-        return;
-    cout << root->data << endl;
-    if (!root->left)
+    if(root == NULL) return;
+    cout<<root->data<<endl;
+    if(root->left)
     {
-        cout << "L: " << root->left->data;
+        cout<<"L: "<<root->left->data;
     }
-    if (!root->right)
+    if(root->right)
     {
-        cout << "R: " << root->right->data;
+        cout<<"R: "<<root->right->data;
     }
-    printtree(root->left);
-    printtree(root->right);
+        printtree(root->left);
+        printtree(root->right);
+    
 }
 
 /**
