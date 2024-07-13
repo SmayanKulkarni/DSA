@@ -18,7 +18,8 @@
         "regex": "cpp",
         "cstdlib": "cpp",
         "algorithm": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "tuple": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
