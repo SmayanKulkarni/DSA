@@ -64,54 +64,104 @@ class BST
         }
         else
         {
-            return hasData(node->right, data); //yes
+            return hasData(node->right, data); // yes
         }
     }
 
-    BTNode<int>* insert(BTNode<int>* node, int data)
+    BTNode<int> *insert(BTNode<int> *node, int data)
     {
-        if(node == nullptr) {
-            BTNode<int>* newNode = new BTNode<int>(data);
+        if (node == nullptr)
+        {
+            BTNode<int> *newNode = new BTNode<int>(data);
             return newNode;
-            
         }
-        if(data<node->data)
+        if (data < node->data)
         {
             node->left = insert(node->left, data);
         }
-        else{
+        else
+        {
             node->right = insert(node->right, data);
         }
 
         return node;
     }
+        BTNode<int> *deletedata(BTNode<int> * node, int data)
+        {
+            if (node == nullptr)
+                return nullptr;
 
-public:
-    BST()
-    {
-        root = NULL;
-    }
-    ~BST()
-    {
-        delete root;
-    }
+            if (data < node->data)
+            {
+                node->left = deletedata(node, data);
+            }
+            else if (data > node->data)
+            {
+                node->right = deletedata(node, data);
+            }
+            else
+            {
+                if (node->right == nullptr && node->left == nullptr)
+                {
+                    delete node;
+                    node = nullptr;
+                    return node;
+                }
+                else if (node->right == nullptr)
+                {
+                    BTNode<int> *temp = node->left;
+                    node->left = nullptr;
+                    delete node;
+                    return temp;
+                }
+                else if (node->left == nullptr)
+                {
+                    BTNode<int> *temp = node->right;
+                    node->right = nullptr;
+                    delete node;
+                    return temp;
+                }
+                else
+                {
+                    BTNode<int> *minNode = node->right;
+                    while (minNode->left)
+                    {
+                        minNode = minNode->left;
+                    }
+                    int mindata = minNode->data;
+                    node->data = mindata;
+                    node->right = deletedata(node->right, mindata);
+                }
+            }
+        }
 
-    void deleteData(int data)
-    {
-    }
-    void insert(int data)
-    {
-        root = insert(root, data);
-    }
-    bool hasData(int data)
-    {
-        return hasData(root, data);
-    }
-    void print()
-    {
-        printTree(root);
-    }
-};
+    public:
+        BST()
+        {
+            root = NULL;
+        }
+        ~BST()
+        {
+            delete root;
+        }
+
+        void deleteData(int data)
+        {
+        }
+        void insert(int data)
+        {
+            root = insert(root, data);
+        }
+        bool hasData(int data)
+        {
+            return hasData(root, data);
+        }
+        void print()
+        {
+            printTree(root);
+        }
+    };
+
 int main()
 {
 
