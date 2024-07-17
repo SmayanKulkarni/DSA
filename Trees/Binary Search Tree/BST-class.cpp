@@ -64,7 +64,7 @@ class BST
         }
         else
         {
-            return hasData(node->right, data);
+            return hasData(node->right, data); //yes
         }
     }
 
