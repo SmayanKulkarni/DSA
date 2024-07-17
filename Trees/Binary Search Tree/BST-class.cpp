@@ -68,6 +68,24 @@ class BST
         }
     }
 
+    BTNode<int>* insert(BTNode<int>* node, int data)
+    {
+        if(node == nullptr) {
+            BTNode<int>* newNode = new BTNode<int>(data);
+            return newNode;
+            
+        }
+        if(data<node->data)
+        {
+            node->left = insert(node->left, data);
+        }
+        else{
+            node->right = insert(node->right, data);
+        }
+
+        return node;
+    }
+
 public:
     BST()
     {
@@ -83,6 +101,7 @@ public:
     }
     void insert(int data)
     {
+        root = insert(root, data);
     }
     bool hasData(int data)
     {
