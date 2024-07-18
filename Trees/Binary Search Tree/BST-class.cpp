@@ -200,11 +200,11 @@ public:
         delete root;
     }
 
-    void deleteData(int data)
+    void deleteData(int data) // O(h)
     {
         root = deletedata(root, data);
     }
-    void insert(int data)
+    void insert(int data) // O(h)
     {
         root = insert(root, data);
     }
@@ -212,7 +212,7 @@ public:
     {
         return hasData(root, data);
     }
-    void print()
+    void print() // O(h)
     {
         printTree(root);
     }
