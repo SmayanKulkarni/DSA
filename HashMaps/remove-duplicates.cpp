@@ -23,5 +23,5 @@ int main()
     int a[] = {1,2,4,5,6,2,3,1,2};
     vector<int> output = removeduplicates(a, 9);
     for(int i = 0;i<output.size();i++) cout<<output[i]<<endl;
-    return 0;
+    return 0; //comment
 }
