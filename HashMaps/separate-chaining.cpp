@@ -45,19 +45,22 @@ private:
         return hashcode % numbuckets;
     }
 
-    void rehash(){
-        MapNode<V>** temp = buckets;
-        buckets = new MapNode<V>*[2*numbuckets];
-        for(int i = 0;i<2*numbuckets; i++)
+    void rehash()
+    {
+        MapNode<V> **temp = buckets;
+        buckets = new MapNode<V> *[2 * numbuckets];
+        for (int i = 0; i < 2 * numbuckets; i++)
         {
             buckets[i] = nullptr;
         }
         int oldbucketsize = numbuckets;
-        numbuckets*=2;
-        count =0;
-        for(int i o;i<oldbucketsize; i++){
-            MapNode<V>* head = temp[i];
-            while(!head){
+        numbuckets *= 2;
+        count = 0;
+        for (int i o; i < oldbucketsize; i++)
+        {
+            MapNode<V> *head = temp[i];
+            while (!head)
+            {
                 string key = head->key;
                 V value = head->value;
                 insert(key, value);
@@ -65,12 +68,13 @@ private:
             }
         }
 
-        for(int i =0;i<oldbucketsize; i++)
+        for (int i = 0; i < oldbucketsize; i++)
         {
             delete temp[i];
         }
-        delete[] temp; 
+        delete[] temp;
     }
+
 public:
     mymap()
     {
@@ -109,9 +113,9 @@ public:
     }
     void insert(string key, V value)
     {
-        int bucketindex = getbucketindex(key);
-        MapNode<V> *head = buckets[bucketindex];
-        while (!head)
+        int bucketIndex = getBucketIndex(key);
+        MapNode<V> *head = buckets[bucketIndex];
+        while (head != NULL)
         {
             if (head->key == key)
             {
@@ -120,10 +124,15 @@ public:
             }
             head = head->next;
         }
-        MapNode<V> *newnode = new MapNode(key, value);
-        newnode->next = buckets[bucketindex];
-        buckets[bucketindex] = newnode;
+        MapNode<V> *node = new MapNode<V>(key, value);
+        node->next = buckets[bucketIndex];
+        buckets[bucketIndex] = node;
         count++;
+        double loadFactor = (1.0 * count) / numBuckets;
+        if (loadFactor > 0.7)
+        {
+            rehash();
+        }
     }
     void remove(string key)
     {
@@ -138,7 +147,8 @@ public:
                 {
                     buckets[bucketindex] = head->next;
                 }
-                else{
+                else
+                {
                     prev->next = head->next;
                 }
                 V value = head->value;
@@ -151,30 +161,38 @@ public:
             head = head->next;
         }
     }
+
+    double getLoadFactor()
+    {
+        return (1.0 * count) / numBuckets;
+    }
 };
 
-int main(){
+int main()
+{
 
     mymap<int> ourmap;
-    for(int i=0;i<10;i++){
+    for (int i = 0; i < 10; i++)
+    {
         char c = '0' + i;
         string key = "abc";
         key = key + c;
         int value = i + 1;
-        ourmap.insert(key,value);
-        cout<<ourmap.getLoadFactor()<<endl;
+        ourmap.insert(key, value);
+        cout << ourmap.getLoadFactor() << endl;
     }
-    cout<<ourmap.size()<<endl;
+    cout << ourmap.size() << endl;
 
     ourmap.remove("abc1");
     ourmap.remove("abc6");
 
-    for(int i=0;i<10;i++){
+    for (int i = 0; i < 10; i++)
+    {
         char c = '0' + i;
         string key = "abc";
         key = key + c;
-        cout<<key<<" "<<ourmap.getValue(key)<<endl;
+        cout << key << " " << ourmap.getValue(key) << endl;
     }
-     cout<<ourmap.size()<<endl;
-  return 0;
+    cout << ourmap.size() << endl;
+    return 0;
 }
