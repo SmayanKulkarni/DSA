@@ -61,7 +61,20 @@ using namespace std;
 
         }
         void insert(string key, V value){
-
+            int bucketindex = getbucketindex(key);
+            MapNode<V>* head = buckets[bucketindex];
+            while(!head){
+                if(head->key == key)
+                {
+                    head->value= value;
+                    return;
+                }
+                head = head->next;
+            }
+            MapNode<V>* newnode = new MapNode(key, value);
+            newnode->next = buckets[bucketindex];
+            buckets[bucketindex] = newnode;
+            count++;
         }
         void remove(string key){
 
