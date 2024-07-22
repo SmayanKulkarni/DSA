@@ -20,7 +20,7 @@ public:
     {
         delete next; // destroy recursively
     }
-}
+};
 
 template <typename V>
 class mymap
@@ -45,6 +45,32 @@ private:
         return hashcode % numbuckets;
     }
 
+    void rehash(){
+        MapNode<V>** temp = buckets;
+        buckets = new MapNode<V>*[2*numbuckets];
+        for(int i = 0;i<2*numbuckets; i++)
+        {
+            buckets[i] = nullptr;
+        }
+        int oldbucketsize = numbuckets;
+        numbuckets*=2;
+        count =0;
+        for(int i o;i<oldbucketsize; i++){
+            MapNode<V>* head = temp[i];
+            while(!head){
+                string key = head->key;
+                V value = head->value;
+                insert(key, value);
+                head = head->next;
+            }
+        }
+
+        for(int i =0;i<oldbucketsize; i++)
+        {
+            delete temp[i];
+        }
+        delete[] temp; 
+    }
 public:
     mymap()
     {
@@ -125,4 +151,30 @@ public:
             head = head->next;
         }
     }
+};
+
+int main(){
+
+    mymap<int> ourmap;
+    for(int i=0;i<10;i++){
+        char c = '0' + i;
+        string key = "abc";
+        key = key + c;
+        int value = i + 1;
+        ourmap.insert(key,value);
+        cout<<ourmap.getLoadFactor()<<endl;
+    }
+    cout<<ourmap.size()<<endl;
+
+    ourmap.remove("abc1");
+    ourmap.remove("abc6");
+
+    for(int i=0;i<10;i++){
+        char c = '0' + i;
+        string key = "abc";
+        key = key + c;
+        cout<<key<<" "<<ourmap.getValue(key)<<endl;
+    }
+     cout<<ourmap.size()<<endl;
+  return 0;
 }
