@@ -109,7 +109,7 @@ public:
             }
             head = head->next;
         }
-        return 0; //final chnage
+        return 0; //final chnages
     }
     void insert(string key, V value)
     {
