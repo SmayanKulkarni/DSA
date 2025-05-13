@@ -4,15 +4,16 @@
 
 
 /*
-Logic Behind Insertion Sort:
+Logic Behind Quick Sort:
 
-Insertion sort is a simple sorting algorithm that works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list. It is like sorting playing cards in your hands. You split the cards into two groups: the sorted cards and the unsorted cards. Then, you pick a card from the unsorted group and put it in the right place in the sorted group. 
+QuickSort is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
 
+It works on the principle of divide and conquer, breaking down the problem into smaller sub-problems.
 
-    1. We start with the second element of the array as the first element is assumed to be sorted.
-    2. Compare the second element with the first element if the second element is smaller then swap them.
-    3. Move to the third element, compare it with the first two elements, and put it in its correct position
-    4. Repeat until the entire array is sorted.
+    1. Choose a Pivot: Select an element from the array as the pivot. The choice of pivot can vary (e.g., first element, last element, random element, or median).
+    2. Partition the Array: Rearrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right. The pivot is then in its correct position, and we obtain the index of the pivot.
+    3. Recursively Call: Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).
+    4. sBase Case: The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.
 */
 
 
