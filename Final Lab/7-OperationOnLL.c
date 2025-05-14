@@ -9,18 +9,18 @@ struct Node
 
 struct Node *InsertBegin(struct Node *head, int val)
 {
-    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-    new_node->data = val;
-    if (head == NULL)
-    {
-        head = new_node;
-        head->next = NULL;
-    }
-    else
-    {
-        new_node->next = head;
-        head = new_node;
-    }
+        struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+        new_node->data = val;
+        if (head == NULL)
+        {
+            head = new_node;
+            head->next = NULL;
+        }
+        else
+        {
+            new_node->next = head;
+            head = new_node;
+        }
     return head;
 }
 
