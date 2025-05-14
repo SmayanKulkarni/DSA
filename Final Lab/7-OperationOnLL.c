@@ -130,7 +130,24 @@ struct Node* DeleteSpecific(struct Node *head, int key) {
 
 }
 
+void SearchNode(struct Node *head, int key) {
+    struct Node *temp = head;
+    if(head==NULL) {
+        printf("Underflow"); 
+    }      
+    else{
+        while(temp->data!=key && temp->next != NULL){
+            temp = temp->next;
+        }
+        printf("The node is found.");
+        return;
+    }
+    printf("The Node is not found.");
+    return;
+}
+
 void print(struct Node *head) {
+    printf("\n");
     struct Node *temp = head;
     while(temp != NULL) {
         printf("%d ", temp->data);
@@ -152,7 +169,7 @@ int main() {
     head = DeleteBegin(head);
     head = DeleteEnd(head);
     head = DeleteSpecific(head, 50);
-
+    SearchNode(head, 12);
     print(head);  
 
     return 0;
