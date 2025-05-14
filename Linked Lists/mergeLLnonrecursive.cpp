@@ -134,7 +134,6 @@ Node* mergeTwoLists(Node* l1, Node* l2) {
             l2 = l2->next;
         }
 
-        // Node* finalTail = finalHead;
         while(l1 && l2)
         {
             if(l1->data < l2->data)
