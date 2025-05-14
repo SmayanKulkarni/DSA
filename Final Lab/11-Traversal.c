@@ -26,7 +26,7 @@ void PreOrder(struct node *root)
     if (root == NULL)
         return;
     printf("%d ", root->data);
-    InOrder(root->left);
+    PreOrder(root->left);
     InOrder(root->right);
 }
 
@@ -36,8 +36,8 @@ void PostOrder(struct node *root)
     if (root == NULL)
         return;
 
-    InOrder(root->left);
-    InOrder(root->right);
+    PostOrder(root->left);
+    PostOrder(root->right);
     printf("%d ", root->data);
 }
 
