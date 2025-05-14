@@ -9,18 +9,18 @@ struct Node
 
 struct Node *InsertBegin(struct Node *head, int val)
 {
-        struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-        new_node->data = val;
-        if (head == NULL)
-        {
-            head = new_node;
-            head->next = NULL;
-        }
-        else
-        {
-            new_node->next = head;
-            head = new_node;
-        }
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    new_node->data = val;
+    if (head == NULL)
+    {
+        head = new_node;
+        head->next = NULL;
+    }
+    else
+    {
+        new_node->next = head;
+        head = new_node;
+    }
     return head;
 }
 
@@ -29,14 +29,15 @@ struct Node *DeleteBegin(struct Node *head)
     if (head == NULL)
     {
         printf("Underflow");
+        return NULL;
     }
     else
     {
         struct Node *temp = head;
         head = head->next;
         free(temp);
+        return head;
     }
-    return head;
 }
 
 struct Node *InsertEnd(struct Node *head, int val)
@@ -96,9 +97,14 @@ struct Node *InsertAfter(struct Node *head, int val, int key)
     else
     {
         struct Node *temp = head;
-        while (temp->data != key)
+        while (temp != NULL && temp->data != key)
         {
             temp = temp->next;
+        }
+        if (temp == NULL)
+        {
+            printf("Node not found!\n");
+            return head;
         }
         new_node->next = temp->next;
         temp->next = new_node;
@@ -115,9 +121,10 @@ struct Node *InsertBefore(struct Node *head, int val, int key)
         head = new_node;
         head->next = NULL;
     }
-    else if(head->data == key){
+    else if (head->data == key)
+    {
         new_node->next = head;
-        head = new_node;    
+        head = new_node;
     }
     else
     {
@@ -150,19 +157,21 @@ struct Node *DeleteSpecific(struct Node *head, int key)
         printf("Underflow");
         return NULL;
     }
-    else if(head->data == key){
+    else if (head->data == key)
+    {
         struct Node *newHead = head->next;
         free(head);
         return newHead;
     }
     else
     {
-        while (temp!= NULL && temp->data != key)
+        while (temp != NULL && temp->data != key)
         {
             prev = temp;
             temp = temp->next;
         }
-        if(temp==NULL){
+        if (temp == NULL)
+        {
             printf("Node not found!\n");
             return head;
         }
@@ -188,9 +197,10 @@ void SearchNode(struct Node *head, int key)
         if (temp->next == NULL)
         {
             printf("The node is not found.");
-            return; 
+            return;
         }
-        else{
+        else
+        {
             printf("The node is found");
         }
     }
@@ -218,6 +228,7 @@ int main()
     head = InsertBegin(head, 20);
     head = InsertBegin(head, 20);
     head = InsertBegin(head, 20);
+    head = InsertAfter(head, 40, 90);
     head = InsertBegin(head, 20);
     head = InsertBegin(head, 30);
     head = InsertEnd(head, 40);
