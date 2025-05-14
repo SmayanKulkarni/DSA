@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TABLE_SIZE 10
+
+struct HashNode
+{
+    int key;
+    int value;
+};
+
+struct HashNode HashTable[TABLE_SIZE];
+
+void InitializeTable()
+{
+
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        HashTable[i].key = -1;
+        HashTable[i].value = 0;
+    }
+}
+
+void Insert(int key, int value)
+{
+
+    int hkey1  = key % TABLE_SIZE;
+    int hkey2 = 7 - (key%7);
+
+    int i = 0;
+
+    while (i < TABLE_SIZE)
+    {
+
+        int index = (hkey1 + hkey2*i)% TABLE_SIZE;
+
+
+        if (HashTable[index].key == -1 || HashTable[index].key == key)
+        {
+            HashTable[index].key = key;
+            HashTable[index].value = value;
+            printf("Inserted key %d with value %d at index %d\n", key, value, index);
+
+            return;
+        }
+        i++;
+    }
+
+    printf("Hash table is full.");
+}
+
+void SearchTable(int key)
+{
+
+    int hkey1  = key % TABLE_SIZE;
+    int hkey2 = 7 - (key%7);
+    int i = 0;
+
+    while (i < TABLE_SIZE)
+    {
+        int index = (hkey1 + hkey2*i)% TABLE_SIZE;
+        if (HashTable[index].key == key)
+        {
+            printf("Element with key %d found at index %d with value %d\n", key, index,
+                   HashTable[index].value);
+            return;
+        }
+        i++;
+    }
+
+    printf("Element with key %d not found in the hash table\n", key);
+}
+
+int main()
+{
+    InitializeTable();
+    int n, key, value;
+    printf("Enter the number of key-value pairs to insert: ");
+    scanf("%d", &n);
+    printf("Enter the key-value pairs one by one:\n");
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d %d", &key, &value);
+        Insert(key, value);
+    }
+    printf("Enter the key to search in the HashTable: ");
+    scanf("%d", &key);
+    SearchTable(key);
+    return 0;
+}
