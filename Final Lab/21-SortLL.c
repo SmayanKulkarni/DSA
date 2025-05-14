@@ -71,6 +71,11 @@ struct Node *DeleteEnd(struct Node *head)
     {
         printf("Underflow");
     }
+    else if (head->next == NULL)
+    {
+        free(head);
+        return NULL;
+    }
     else
     {
         while (temp->next != NULL)
@@ -166,27 +171,36 @@ struct Node *DeleteSpecific(struct Node *head, int key)
 void SearchNode(struct Node *head, int key)
 {
     struct Node *temp = head;
+    while (temp != NULL)
+    {
+        if (temp->data == key)
+        {
+            printf("The node is found.\n");
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("The node is not found.\n");
+}
+
+struct Node *sortList(struct Node *head)
+{
     if (head == NULL)
+        return NULL;
+    struct Node *i, *j;
+    for (i = head; i->next != NULL; i = i->next)
     {
-        printf("Underflow");
-    }
-    else
-    {
-        while (temp->data != key && temp->next != NULL)
+        for (j = head; j->next != NULL; j = j->next)
         {
-            temp = temp->next;
-        }
-        if (temp->next == NULL)
-        {
-            printf("The node is not found.");
-            return; 
-        }
-        else{
-            printf("The node is found");
+            if (j->data > j->next->data)
+            {
+                int temp = j->data;
+                j->data = j->next->data;
+                j->next->data = temp;
+            }
         }
     }
-    printf("The Node is not found.");
-    return;
+    return head;
 }
 
 void print(struct Node *head)
@@ -206,8 +220,8 @@ int main()
     struct Node *head = NULL;
 
     head = InsertBegin(head, 10);
-    head = InsertBegin(head, 20);
     head = InsertBegin(head, 30);
+    head = InsertBegin(head, 20);
     head = InsertEnd(head, 40);
     head = InsertEnd(head, 50);
     head = InsertAfter(head, 50, 20);
@@ -216,6 +230,8 @@ int main()
     head = DeleteEnd(head);
     head = DeleteSpecific(head, 50);
     SearchNode(head, 12);
+    head = InsertBegin(head, 90);
+    head = sortList(head);
     print(head);
 
     return 0;
