@@ -227,6 +227,8 @@ int main()
     head = InsertEnd(head, 40);
     head = InsertEnd(head, 50);
     head = InsertAfter(head, 50, 20);
+    head = InsertAfter(head, 50, 20);
+    head = InsertAfter(head, 50, 20);
     head = InsertBefore(head, 70, 20);
     head = DeleteBegin(head);
     head = DeleteBegin(head);
@@ -236,6 +238,10 @@ int main()
     head = DeleteSpecific(head, 50);
     head = DeleteSpecific(head, 20);
     head = DeleteSpecific(head, 10);
+    head = DeleteSpecific(head, 40);
+    head = DeleteSpecific(head, 40);
+    head = DeleteSpecific(head, 40);
+    head = DeleteSpecific(head, 40);
     SearchNode(head, 12);
     print(head);
 
