@@ -75,7 +75,7 @@ void Display(){
     }
     int temp = top;
 
-    while(temp>=-0){
+    while(temp>=0){
         printf("%d " , Stack[temp--]);
     }
     return;

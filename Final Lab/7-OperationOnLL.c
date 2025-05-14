@@ -26,14 +26,13 @@ struct Node *InsertBegin(struct Node *head, int val)
 
 struct Node *DeleteBegin(struct Node *head)
 {
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
     if (head == NULL)
     {
         printf("Underflow");
     }
     else
     {
-        temp = head;
+        struct Node *temp = head;
         head = head->next;
         free(temp);
     }
@@ -149,13 +148,23 @@ struct Node *DeleteSpecific(struct Node *head, int key)
     if (head == NULL)
     {
         printf("Underflow");
+        return NULL;
+    }
+    else if(head->data == key){
+        struct Node *newHead = head->next;
+        free(head);
+        return newHead;
     }
     else
     {
-        while (temp->data != key)
+        while (temp!= NULL && temp->data != key)
         {
             prev = temp;
             temp = temp->next;
+        }
+        if(temp==NULL){
+            printf("Node not found!\n");
+            return head;
         }
         prev->next = temp->next;
         free(temp);
@@ -207,14 +216,26 @@ int main()
 
     head = InsertBegin(head, 10);
     head = InsertBegin(head, 20);
+    head = InsertBegin(head, 20);
+    head = InsertBegin(head, 20);
+    head = InsertBegin(head, 20);
     head = InsertBegin(head, 30);
+    head = InsertEnd(head, 40);
+    head = InsertEnd(head, 40);
+    head = InsertEnd(head, 40);
+    head = InsertEnd(head, 40);
     head = InsertEnd(head, 40);
     head = InsertEnd(head, 50);
     head = InsertAfter(head, 50, 20);
     head = InsertBefore(head, 70, 20);
     head = DeleteBegin(head);
+    head = DeleteBegin(head);
+    head = DeleteBegin(head);
+    head = DeleteBegin(head);
     head = DeleteEnd(head);
     head = DeleteSpecific(head, 50);
+    head = DeleteSpecific(head, 20);
+    head = DeleteSpecific(head, 10);
     SearchNode(head, 12);
     print(head);
 
