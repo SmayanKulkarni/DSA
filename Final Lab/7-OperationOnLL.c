@@ -1,106 +1,126 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
+struct Node
+{
     struct Node *next;
     int data;
 };
 
-struct Node* InsertBegin(struct Node *head, int val) {
-    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+struct Node *InsertBegin(struct Node *head, int val)
+{
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     new_node->data = val;
-    if(head==NULL) {
+    if (head == NULL)
+    {
         head = new_node;
         head->next = NULL;
-    } 
-    else{
+    }
+    else
+    {
         new_node->next = head;
         head = new_node;
-    }   
+    }
     return head;
 }
 
-struct Node* DeleteBegin(struct Node *head) {
-    struct Node *temp = (struct Node*)malloc(sizeof(struct Node));
-    if(head==NULL) {
+struct Node *DeleteBegin(struct Node *head)
+{
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    if (head == NULL)
+    {
         printf("Underflow");
-    } 
-    else{
+    }
+    else
+    {
         temp = head;
         head = head->next;
         free(temp);
-    }   
+    }
     return head;
 }
 
-struct Node* InsertEnd(struct Node *head, int val) {
-    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+struct Node *InsertEnd(struct Node *head, int val)
+{
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *temp = head;
     new_node->data = val;
-    if(head==NULL) {
+    if (head == NULL)
+    {
         head = new_node;
         head->next = NULL;
-    }      
-    else{
-        while(temp->next!=NULL){
+    }
+    else
+    {
+        while (temp->next != NULL)
+        {
             temp = temp->next;
         }
         temp->next = new_node;
+        new_node->next = NULL;
     }
     return head;
-
 }
 
-struct Node* DeleteEnd(struct Node *head) {
+struct Node *DeleteEnd(struct Node *head)
+{
     struct Node *temp = head;
     struct Node *prev = NULL;
-    
-    if(head==NULL) {
+
+    if (head == NULL)
+    {
         printf("Underflow");
-    }      
-    else{
-        while(temp->next!=NULL){
+    }
+    else
+    {
+        while (temp->next != NULL)
+        {
             prev = temp;
             temp = temp->next;
         }
         prev->next = NULL;
         free(temp);
-        
     }
     return head;
-
 }
 
-struct Node* InsertAfter(struct Node *head, int val, int key) {
-    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+struct Node *InsertAfter(struct Node *head, int val, int key)
+{
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *temp = head;
     new_node->data = val;
-    if(head==NULL) {
+    if (head == NULL)
+    {
         head = new_node;
-        head->next = NULL;  
-    }      
-    else{
-        while(temp->data!=key){
+        head->next = NULL;
+    }
+    else
+    {
+        while (temp->data != key)
+        {
             temp = temp->next;
         }
         new_node->next = temp->next;
         temp->next = new_node;
     }
     return head;
-
 }
 
-struct Node* InsertBefore(struct Node *head, int val, int key) {
-    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+struct Node *InsertBefore(struct Node *head, int val, int key)
+{
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *temp = head;
     struct Node *prev = NULL;
     new_node->data = val;
-    if(head==NULL) {
+    if (head == NULL)
+    {
         head = new_node;
-        head->next = NULL;  
-    }      
-    else{
-        while(temp->data!=key){
+        head->next = NULL;
+    }
+    else
+    {
+        while (temp->data != key)
+        {
             prev = temp;
             temp = temp->next;
         }
@@ -108,18 +128,20 @@ struct Node* InsertBefore(struct Node *head, int val, int key) {
         new_node->next = temp;
     }
     return head;
-
 }
 
-
-struct Node* DeleteSpecific(struct Node *head, int key) {
+struct Node *DeleteSpecific(struct Node *head, int key)
+{
     struct Node *temp = head;
     struct Node *prev = NULL;
-    if(head==NULL) {
-        printf("Underflow"); 
-    }      
-    else{
-        while(temp->data!=key){
+    if (head == NULL)
+    {
+        printf("Underflow");
+    }
+    else
+    {
+        while (temp->data != key)
+        {
             prev = temp;
             temp = temp->next;
         }
@@ -127,40 +149,52 @@ struct Node* DeleteSpecific(struct Node *head, int key) {
         free(temp);
     }
     return head;
-
 }
 
-void SearchNode(struct Node *head, int key) {
+void SearchNode(struct Node *head, int key)
+{
     struct Node *temp = head;
-    if(head==NULL) {
-        printf("Underflow"); 
-    }      
-    else{
-        while(temp->data!=key && temp->next != NULL){
+    if (head == NULL)
+    {
+        printf("Underflow");
+    }
+    else
+    {
+        while (temp->data != key && temp->next != NULL)
+        {
             temp = temp->next;
         }
-        printf("The node is found.");
-        return;
+        if (temp->next == NULL)
+        {
+            printf("The node is not found.");
+            return; 
+        }
+        else{
+            printf("The node is found");
+        }
     }
     printf("The Node is not found.");
     return;
 }
 
-void print(struct Node *head) {
+void print(struct Node *head)
+{
     printf("\n");
     struct Node *temp = head;
-    while(temp != NULL) {
+    while (temp != NULL)
+    {
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
 }
 
-int main() {
-    struct Node *head = NULL;  
+int main()
+{
+    struct Node *head = NULL;
 
-    head = InsertBegin(head, 10); 
-    head = InsertBegin(head, 20); 
+    head = InsertBegin(head, 10);
+    head = InsertBegin(head, 20);
     head = InsertBegin(head, 30);
     head = InsertEnd(head, 40);
     head = InsertEnd(head, 50);
@@ -170,7 +204,7 @@ int main() {
     head = DeleteEnd(head);
     head = DeleteSpecific(head, 50);
     SearchNode(head, 12);
-    print(head);  
+    print(head);
 
     return 0;
 }
