@@ -20,11 +20,11 @@ void InitializeTable()
     }
 }
 
-void Insert(int key, int value)
+void Insert(int key, int value, int prime)
 {
 
     int hkey1  = key % TABLE_SIZE;
-    int hkey2 = 7 - (key%7);
+    int hkey2 = prime - (key%prime);
 
     int i = 0;
 
@@ -48,11 +48,11 @@ void Insert(int key, int value)
     printf("Hash table is full.");
 }
 
-void SearchTable(int key)
+void SearchTable(int key, int prime)
 {
 
     int hkey1  = key % TABLE_SIZE;
-    int hkey2 = 7 - (key%7);
+    int hkey2 = prime - (key%prime);
     int i = 0;
 
     while (i < TABLE_SIZE)
@@ -84,10 +84,10 @@ int main()
     for (int i = 0; i < n; i++)
     {
         scanf("%d %d", &key, &value);
-        Insert(key, value);
+        Insert(key, value, 13);
     }
     printf("Enter the key to search in the HashTable: ");
     scanf("%d", &key);
-    SearchTable(key);
+    SearchTable(key,13);
     return 0;
 }
