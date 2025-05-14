@@ -61,6 +61,10 @@ void SearchTable(int key)
                    HashTable[index].value);
             return;
         }
+        if (HashTable[index].key == -1)
+        {
+            break;
+        }
         i++;
     }
 
