@@ -45,6 +45,7 @@ struct Node *InsertEnd(struct Node *head, int val)
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *temp = head;
     new_node->data = val;
+    new_node->next = NULL;
     if (head == NULL)
     {
         head = new_node;
