@@ -19,12 +19,13 @@ It works on the principle of divide and conquer, breaking down the problem into 
 
 int partition(int arr[], int s, int e)
 {
-    int i=s;
-    int temp;
     int pivot = arr[s];
-    for(int j=s; j<=e;j++)
+    int temp;
+    int i = s + 1;
+
+    for (int j = s + 1; j <= e; j++)
     {
-        if(arr[j]<pivot)
+        if (arr[j] < pivot)
         {
             temp = arr[i];
             arr[i] = arr[j];
@@ -32,12 +33,12 @@ int partition(int arr[], int s, int e)
             i++;
         }
     }
-    temp = arr[i];
-    arr[i] = arr[e];
-    arr[e] = temp;
-    i++;
-    return i;
+    temp = arr[s];
+    arr[s] = arr[i-1];
+    arr[i-1] = temp;
+    return i - 1;
 }
+
 
 void quicksort(int a[], int s, int e)
 {

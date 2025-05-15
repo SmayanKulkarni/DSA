@@ -33,17 +33,19 @@ void merge(int arr[], int mid, int low, int high){
         }
     }
 
+    while(j<=high){
+        B[k] = arr[j];
+        j++;
+        k++;
+    }
+    
     while(i<=mid){
         B[k] = arr[i];  
         i++;
         k++;
     }
 
-    while(j<=high){
-        B[k] = arr[j];
-        j++;
-        k++;
-    }
+    
 
     for (i = low; i<=high; i++){
         arr[i] = B[i];
