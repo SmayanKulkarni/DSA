@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
 int board[20], n;
 
 int place(int row, int col)
 {
+
     for (int i = 1; i < row; i++)
     {
-        if (abs(col - board[i]) == abs(row - i) || board[i] == col)
+        if (board[i] ==  col || abs(row - i) == abs(board[i] - col))
         {
             return 0;
         }
     }
+
     return 1;
 }
 
@@ -31,21 +32,24 @@ void printSolution()
         }
         printf("\n");
     }
-    return;
+    printf("\n");
 }
 
-void Nqueen(int row)
+void NQueen(int row)
 {
-    for (int col = 1; col <= n; col++)
+
+    for (int col = 1; col <=n; col++)
     {
         if (place(row, col))
         {
             board[row] = col;
             if (row == n)
+            {
                 printSolution();
+            }
             else
             {
-                Nqueen(row + 1);
+                NQueen(row + 1);
             }
         }
     }
@@ -53,8 +57,14 @@ void Nqueen(int row)
 
 int main()
 {
-    printf("Enter the value of n: ");
+
+    printf("Enter the number of queens: ");
     scanf("%d", &n);
-    Nqueen(1);
+    if (n < 1)
+    {
+        printf("Invalid number of queens.\n");
+        return 0;
+    }
+    NQueen(1);
     return 0;
 }
